@@ -23,7 +23,7 @@ public class PrimaryTest {
         Foo foo2 = applicationContext.getBean("foo2", Foo.class);
 
         Assertions.assertSame(foo, foo1);
-        Assertions.assertNotSame(foo, foo1);
+        Assertions.assertNotSame(foo, foo2);
         Assertions.assertNotSame(foo1, foo2);
     }
 }
