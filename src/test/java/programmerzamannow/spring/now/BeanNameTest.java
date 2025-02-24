@@ -7,23 +7,22 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import programmerzamannow.spring.now.data.Foo;
 
-public class PrimaryTest {
+public class BeanNameTest {
 
     private ApplicationContext applicationContext;
 
     @BeforeEach
     void setUp() {
-        applicationContext = new AnnotationConfigApplicationContext(PrimaryConfiguration.class);
+        applicationContext = new AnnotationConfigApplicationContext(BeanNameConfiguration.class);
     }
 
     @Test
-    void testGetPrimary() {
+    void testBeanName() {
         Foo foo = applicationContext.getBean(Foo.class);
-        Foo foo1 = applicationContext.getBean("foo1", Foo.class);
-        Foo foo2 = applicationContext.getBean("foo2", Foo.class);
+        Foo fooFirst = applicationContext.getBean("fooFirst", Foo.class);
+        Foo fooSecond = applicationContext.getBean("fooSecond", Foo.class);
 
-        Assertions.assertSame(foo, foo1);
-        Assertions.assertNotSame(foo, foo2);
-        Assertions.assertNotSame(foo1, foo2);
+        Assertions.assertSame(foo, fooFirst);
+        Assertions.assertNotSame(foo, fooSecond);
     }
 }
